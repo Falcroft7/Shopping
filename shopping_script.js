@@ -1,26 +1,31 @@
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5vls80UMNhXVm9NImEGovsuQa3OKc_jnsGqcinv_cTQ6JzolwF7K2Z459Os07qnyXC6hx48M8EW6k/pub?output=csv'; 
 
-let wishlistData = [];
+let wishlistData = []; // C'est notre base de données unique
 
 async function init() {
-    Papa.parse('achats.csv', {
+    Papa.parse(CSV_URL, {
         download: true,
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
             wishlistData = results.data.sort((a, b) => {
-                const posA = parseInt(a.Position.replace('#', ''));
-                const posB = parseInt(b.Position.replace('#', ''));
+                const posA = parseInt(a.Position.replace('#', '')) || 0;
+                const posB = parseInt(b.Position.replace('#', '')) || 0;
                 return posA - posB;
             });
+            
+            setupFilters();
             render(wishlistData);
         }
     });
 }
 
 function setupFilters() {
-    const stores = [...new Set(products.map(p => p.magasin))];
+    const stores = [...new Set(wishlistData.map(p => p.Magasin).filter(Boolean))];
     const select = document.getElementById('storeFilter');
+    
+    select.innerHTML = '<option value="">Tous les magasins</option>';
+    
     stores.forEach(s => {
         const op = document.createElement('option');
         op.value = s;
@@ -28,9 +33,9 @@ function setupFilters() {
         select.appendChild(op);
     });
 
-    document.querySelectorAll('input, select').forEach(el => {
-        el.addEventListener('input', applyFilters);
-    });
+    document.getElementById('search').addEventListener('input', applyFilters);
+    document.getElementById('priceMax').addEventListener('input', applyFilters);
+    document.getElementById('storeFilter').addEventListener('change', applyFilters);
 }
 
 function applyFilters() {
@@ -38,16 +43,24 @@ function applyFilters() {
     const sPrice = parseFloat(document.getElementById('priceMax').value) || Infinity;
     const sStore = document.getElementById('storeFilter').value;
 
-    const filtered = products.filter(p => {
-        return p.nom_produit.toLowerCase().includes(sName) &&
-               p.prix <= sPrice &&
-               (sStore === "" || p.magasin === sStore);
+    const filtered = wishlistData.filter(p => {
+        const nameMatch = p['Nom Produit'] && p['Nom Produit'].toLowerCase().includes(sName);
+        const storeMatch = sStore === "" || p.Magasin === sStore;
+        const priceMatch = parseFloat(p.Prix) <= sPrice;
+
+        return nameMatch && storeMatch && priceMatch;
     });
+    
     render(filtered);
 }
 
 function render(data) {
     const grid = document.getElementById('wishlist-grid');
+    if (data.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">Aucun produit trouvé.</p>';
+        return;
+    }
+
     grid.innerHTML = data.map(item => `
         <div class="wish-card glass">
             <div class="position-badge">${item.Position}</div>
