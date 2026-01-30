@@ -39,6 +39,6 @@ function applyFilters() {
             return posA - posB;
         });
     }
-    
+    updateCounter(result.length);
     render(result);
 }
