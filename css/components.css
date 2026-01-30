@@ -1,17 +1,31 @@
 /* --- Les Champs de saisie (Inputs & Select) --- */
 input, select {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1.5px solid #f1f5f9;
+    background-color: #f8fafc;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background-color: var(--card);
+    flex: 1;
+    min-width: 150px;
+}
+
+input:hover, select:hover {
+    border-color: #cbd5e1;
 }
 
 input:focus, select:focus {
+    background-color: #ffffff;
     border-color: var(--accent);
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+#search {
+    flex: 2; 
 }
 
 /* --- Le conteneur de chaque produit (Ligne) --- */
