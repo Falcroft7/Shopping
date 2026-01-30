@@ -117,3 +117,20 @@ input:focus, select:focus {
     margin: 0;
     line-height: 1.4;
 }
+
+/* Style spécial pour Boutique ADA */
+.special-store {
+    border-left: 5px solid #f59e0b !important;
+    background-color: #fffbeb !important;
+}
+
+.shipping-warning {
+    display: inline-block;
+    font-size: 0.75rem;
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-top: 4px;
+    font-weight: 600;
+}
