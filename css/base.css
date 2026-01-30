@@ -4,8 +4,12 @@
     --bg: #f8fafc;
     --card: #ffffff;
     --accent: #3b82f6;
+    --accent-hover: #2563eb;
     --text-main: #1e293b;
     --text-muted: #64748b;
+    --warning-bg: #fef3c7;
+    --warning-text: #92400e;
+    --warning-border: #f59e0b;
 }
 
 body {
@@ -13,4 +17,5 @@ body {
     background-color: var(--bg);
     color: var(--text-main);
     margin: 0;
+    line-height: 1.5;
 }
