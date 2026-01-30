@@ -1,22 +1,23 @@
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5vls80UMNhXVm9NImEGovsuQa3OKc_jnsGqcinv_cTQ6JzolwF7K2Z459Os07qnyXC6hx48M8EW6k/pub?output=csv'; 
 
-let products = [];
+let wishlistData = [];
 
-// 1. Chargement des données
-async function loadData() {
-    Papa.parse(CSV_URL, {
+async function init() {
+    Papa.parse('achats.csv', {
         download: true,
         header: true,
-        dynamicTyping: true,
+        skipEmptyLines: true,
         complete: (results) => {
-            products = results.data.filter(p => p.nom_produit);
-            setupFilters();
-            render(products);
+            wishlistData = results.data.sort((a, b) => {
+                const posA = parseInt(a.Position.replace('#', ''));
+                const posB = parseInt(b.Position.replace('#', ''));
+                return posA - posB;
+            });
+            render(wishlistData);
         }
     });
 }
 
-// 2. Création dynamique du filtre magasin
 function setupFilters() {
     const stores = [...new Set(products.map(p => p.magasin))];
     const select = document.getElementById('storeFilter');
@@ -27,13 +28,11 @@ function setupFilters() {
         select.appendChild(op);
     });
 
-    // Listeners
     document.querySelectorAll('input, select').forEach(el => {
         el.addEventListener('input', applyFilters);
     });
 }
 
-// 3. Application des filtres
 function applyFilters() {
     const sName = document.getElementById('search').value.toLowerCase();
     const sPrice = parseFloat(document.getElementById('priceMax').value) || Infinity;
@@ -47,22 +46,25 @@ function applyFilters() {
     render(filtered);
 }
 
-// 4. Rendu des cartes
 function render(data) {
     const grid = document.getElementById('wishlist-grid');
-    grid.innerHTML = data.map(p => `
-        <div class="wish-card">
-            <img src="${p.url_image || 'https://via.placeholder.com/300'}" alt="${p.nom_produit}">
-            <div style="padding: 0 10px">
-                <small style="color: #64748b; font-weight: 600">${p.magasin}</small>
-                <h3 style="margin: 5px 0 15px 0; font-size: 1.1rem">${p.nom_produit}</h3>
-                <div style="display: flex; justify-content: space-between; align-items: center">
-                    <span class="price-tag">${p.prix}€</span>
-                    <a href="${p.url_produit || '#'}" target="_blank" style="text-decoration: none; color: #3b82f6; font-weight: 600">Détails →</a>
+    grid.innerHTML = data.map(item => `
+        <div class="wish-card glass">
+            <div class="position-badge">${item.Position}</div>
+            <img src="${item.Image}" alt="${item['Nom Produit']}" onerror="this.src='https://via.placeholder.com/300?text=Image+Indisponible'">
+            
+            <div class="card-content">
+                <div class="card-header">
+                    <h3 class="product-name">${item['Nom Produit']}</h3>
+                    <span class="price-tag">${item.Prix}€</span>
                 </div>
+                
+                <p class="store-name">📍 ${item.Magasin}</p>
+                
+                ${item.Commentaire ? `<p class="comment">${item.Commentaire}</p>` : ''}
             </div>
         </div>
     `).join('');
 }
 
-loadData();
+init();
