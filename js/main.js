@@ -5,11 +5,15 @@ function init() {
         skipEmptyLines: true,
         complete: (results) => {
             wishlistData = results.data;
-            
             setupFilters();
+            updateCounter(wishlistData.length);
             render(wishlistData);
+        },
+        error: (err) => {
+            console.error("Erreur lors du chargement du CSV :", err);
+            document.getElementById('results-counter').textContent = "Erreur de chargement des données.";
         }
     });
 }
 
-init();
+document.addEventListener('DOMContentLoaded', init);
