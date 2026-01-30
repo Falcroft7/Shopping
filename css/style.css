@@ -1,14 +1,5 @@
-/* 1. Les réglages de base (Variables, polices) */
 @import "base.css";
-
-/* 2. La structure du site */
+@import "animations.css";
 @import "layout.css";
-
-/* 3. Les éléments (boutons, listes, images) */
 @import "components.css";
-
-/* 4. Les animations */
-@import "animation.css";
-
-/* 5. Le mobile en dernier pour qu'il soit prioritaire */
 @import "responsive.css";
