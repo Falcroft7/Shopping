@@ -136,3 +136,94 @@ input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(59, 130, 2
     margin-top: 10px;
     font-style: italic;
 }
+
+/* On change le conteneur pour qu'il ne soit plus une grille de cartes */
+.grid-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espace entre les lignes */
+    padding: 0 20px 60px 20px;
+}
+
+/* Style de chaque ligne */
+.wish-item {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 15px 20px;
+    border: 1px solid #f1f5f9;
+    transition: transform 0.2s ease;
+}
+
+.wish-item:hover {
+    transform: translateX(5px);
+    border-color: var(--accent);
+}
+
+/* Alignement horizontal des éléments */
+.item-main-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.item-pos {
+    font-weight: 800;
+    color: #94a3b8;
+    min-width: 40px;
+}
+
+.item-img-container img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.item-info {
+    flex: 2; /* Prend le maximum d'espace */
+}
+
+.item-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.store-name {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.item-price {
+    flex: 1;
+    text-align: right;
+}
+
+/* Section commentaire en dessous */
+.item-footer {
+    margin-top: 10px;
+    margin-left: 120px; /* Aligne le texte après l'image */
+    padding-top: 10px;
+    border-top: 1px dotted #e2e8f0;
+}
+
+.comment {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Mobile : on empile si l'écran est trop petit */
+@media (max-width: 600px) {
+    .item-main-row {
+        flex-wrap: wrap;
+    }
+    .item-info {
+        min-width: 150px;
+    }
+    .item-footer {
+        margin-left: 0;
+    }
+}
