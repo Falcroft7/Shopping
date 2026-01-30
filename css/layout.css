@@ -1,1 +1,21 @@
+.header-section {
+    text-align: center;
+    padding: 60px 20px;
+}
 
+.filters-bar {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    display: flex;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.grid-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px 60px 20px;
+}
