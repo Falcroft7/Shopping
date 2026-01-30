@@ -1,5 +1,4 @@
-// Remplace par l'URL de ton CSV GitHub une fois en ligne
-const CSV_URL = 'achats.csv'; 
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5vls80UMNhXVm9NImEGovsuQa3OKc_jnsGqcinv_cTQ6JzolwF7K2Z459Os07qnyXC6hx48M8EW6k/pub?output=csv'; 
 
 let products = [];
 
