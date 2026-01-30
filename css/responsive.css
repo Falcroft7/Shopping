@@ -1,1 +1,5 @@
-
+@media (max-width: 600px) {
+    .item-main-row { flex-wrap: wrap; }
+    .item-footer { margin-left: 0; }
+    .filters-bar { flex-direction: column; }
+}
