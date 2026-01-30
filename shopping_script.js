@@ -1,20 +1,13 @@
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5vls80UMNhXVm9NImEGovsuQa3OKc_jnsGqcinv_cTQ6JzolwF7K2Z459Os07qnyXC6hx48M8EW6k/pub?output=csv'; 
 
-let wishlistData = []; // C'est notre base de données unique
+let wishlistData = [];
 
-async function init() {
+function init() {
     Papa.parse(CSV_URL, {
         download: true,
         header: true,
-        skipEmptyLines: true,
         complete: (results) => {
-            wishlistData = results.data.sort((a, b) => {
-                const posA = parseInt(a.Position.replace('#', '')) || 0;
-                const posB = parseInt(b.Position.replace('#', '')) || 0;
-                return posA - posB;
-            });
-            
-            setupFilters();
+            wishlistData = results.data;
             render(wishlistData);
         }
     });
