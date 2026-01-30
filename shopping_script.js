@@ -8,6 +8,7 @@ function init() {
         header: true,
         complete: (results) => {
             wishlistData = results.data;
+            setupFilters();
             render(wishlistData);
         }
     });
