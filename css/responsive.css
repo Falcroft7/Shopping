@@ -15,3 +15,20 @@
     .item-footer { margin-left: 0; }
     .filters-bar { flex-direction: column; }
 }
+
+@media (max-width: 480px) {
+    .btn-text-extra {
+        display: none;
+    }
+    
+    .view-btn {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .item-price {
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+}
