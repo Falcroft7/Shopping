@@ -23,7 +23,11 @@ function render(data) {
             <div class="item-main-row">
                 <div class="item-pos">${item.Position}</div>
                 <div class="item-img-container">
-                    <img src="${item.Image}" alt="${item['Nom Produit']}" onerror="this.src='https://via.placeholder.com/100?text=Image'">
+                    ${item.Lien ? `<a href="${item.Lien}" target="_blank" rel="noopener noreferrer">` : ''}
+                        <img src="${item.Image}" 
+                             alt="${item['Nom Produit']}" 
+                             onerror="this.src='https://via.placeholder.com/100?text=Image'">
+                    ${item.Lien ? `</a>` : ''}
                 </div>
                 <div class="item-info">
                     <h3 class="product-name">${item['Nom Produit']}</h3>
