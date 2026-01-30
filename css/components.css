@@ -1,1 +1,104 @@
+/* --- Les Champs de saisie (Inputs & Select) --- */
+input, select {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--card);
+}
 
+input:focus, select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* --- Le conteneur de chaque produit (Ligne) --- */
+.wish-item {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 15px 20px;
+    border: 1px solid #f1f5f9;
+    transition: all 0.2s ease;
+}
+
+.wish-item:hover {
+    transform: translateX(5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* --- La ligne principale --- */
+.item-main-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Position (#1, #2...) */
+.item-pos {
+    font-weight: 800;
+    color: #94a3b8;
+    min-width: 40px;
+    font-size: 1.1rem;
+}
+
+/* Image agrandie */
+.item-img-container img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #f1f5f9;
+    display: block;
+}
+
+/* Infos Textuelles */
+.item-info {
+    flex: 2;
+}
+
+.product-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: var(--text-main);
+}
+
+.store-name {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Prix */
+.item-price {
+    flex: 1;
+    text-align: right;
+}
+
+.price-tag {
+    background: #f0f7ff;
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+/* --- Section Commentaire --- */
+.item-footer {
+    margin-top: 15px;
+    margin-left: 160px; 
+    padding-top: 12px;
+    border-top: 1px dotted #e2e8f0;
+}
+
+.comment {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.4;
+}
