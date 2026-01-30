@@ -36,6 +36,11 @@ function render(data) {
                 </div>
                 <div class="item-price">
                     <span class="price-tag">${item.Prix}€</span>
+                    ${item.Lien ? `
+                        <a href="${item.Lien}" target="_blank" rel="noopener noreferrer" class="view-btn">
+                            Voir <span class="btn-text-extra">le produit</span>
+                        </a>
+                    ` : ''}
                 </div>
             </div>
             ${item.Commentaire ? `<div class="item-footer"><p class="comment">${item.Commentaire}</p></div>` : ''}
