@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Wishlist Moderne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <link rel="stylesheet" href="shopping_style.css">
+</head>
+<body>
 
+    <div id="app">
+        <header class="header-section">
+            <h1>Mes Envies</h1>
+            <p>Ma liste de souhaits personnelle</p>
+        </header>
+
+        <nav class="filters-bar">
+            <input type="text" id="search" placeholder="Rechercher un produit...">
+            <input type="number" id="priceMax" placeholder="Prix Max €">
+            <select id="storeFilter">
+                <option value="">Tous les magasins</option>
+            </select>
+        </nav>
+
+        <main id="wishlist-grid" class="grid-container">
+            </main>
+    </div>
+
+    <script src="shopping_script.js"></script>
+</body>
+</html>
