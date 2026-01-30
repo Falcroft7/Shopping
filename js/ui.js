@@ -5,8 +5,11 @@ function render(data) {
         return;
     }
 
-    grid.innerHTML = data.map(item => `
-        <div class="wish-item glass">
+    grid.innerHTML = data.map(item => {
+        const isSpecial = item.Magasin === "Boutique ADA";
+        
+        return `
+        <div class="wish-item glass ${isSpecial ? 'special-store' : ''}">
             <div class="item-main-row">
                 <div class="item-pos">${item.Position}</div>
                 <div class="item-img-container">
@@ -15,6 +18,7 @@ function render(data) {
                 <div class="item-info">
                     <h3 class="product-name">${item['Nom Produit']}</h3>
                     <span class="store-name">📍 ${item.Magasin}</span>
+                    ${isSpecial ? '<br><span class="shipping-warning">⚠️ Frais de livraison à prévoir</span>' : ''}
                 </div>
                 <div class="item-price">
                     <span class="price-tag">${item.Prix}€</span>
@@ -26,5 +30,5 @@ function render(data) {
                 </div>
             ` : ''}
         </div>
-    `).join('');
+    `}).join('');
 }
