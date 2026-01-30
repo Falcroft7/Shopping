@@ -69,6 +69,21 @@ input:focus, select:focus {
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     display: block;
+    transition: filter 0.3s ease;
+}
+
+.item-img-container a {
+    display: block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.item-img-container a:hover {
+    transform: scale(1.05);
+}
+
+.item-img-container a:hover img {
+    filter: brightness(0.9);
 }
 
 /* Infos Textuelles */
