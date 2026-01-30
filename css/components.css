@@ -58,13 +58,14 @@ input:focus, select:focus {
     font-size: 1.1rem;
 }
 
-/* Image agrandie */
+/* Image */
 .item-img-container img {
     width: 200px;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain; 
+    background-color: #f1f5f9; 
     border-radius: 10px;
-    border: 1px solid #f1f5f9;
+    border: 1px solid #e2e8f0;
     display: block;
 }
 
