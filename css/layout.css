@@ -19,3 +19,16 @@
     gap: 15px;
     padding: 0 20px 60px 20px;
 }
+
+.filters-bar {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
