@@ -23,6 +23,16 @@ input:focus, select:focus {
 #search { flex: 2; }
 
 /* --- Carte Produit --- */
+.skeleton-item {
+    height: 230px; 
+    width: 100%;
+    background-color: #f1f5f9;
+    border-radius: 16px;
+    animation: skeleton-pulse 1.5s infinite ease-in-out;
+    border: 1px solid #f1f5f9;
+    margin-bottom: 15px;
+}
+
 .wish-item {
     background: var(--card);
     border-radius: 16px;
@@ -30,7 +40,7 @@ input:focus, select:focus {
     border: 1px solid #f1f5f9;
     transition: all 0.2s ease;
     animation: fadeSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    opacity: 0; /* Géré par l'animation */
+    opacity: 0;
 }
 
 .wish-item:hover {
