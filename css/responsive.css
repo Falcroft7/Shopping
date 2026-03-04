@@ -26,5 +26,6 @@
 /* Petit Mobile */
 @media (max-width: 480px) {
     .btn-text-extra { display: none; }
-    .view-btn { padding: 8px 12px; }
+    .view-btn { padding: 8px 12px; font-size: 0.8rem; }
+    .price-tag { padding: 6px 12px; font-size: 0.95rem; }
 }
