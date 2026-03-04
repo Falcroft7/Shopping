@@ -12,7 +12,14 @@
 @media (max-width: 600px) {
     .item-main-row { flex-wrap: wrap; justify-content: center; text-align: center; }
     .item-info { min-width: 100%; }
-    .item-price { align-items: center; width: 100%; }
+    .item-price {
+        flex-direction: row;
+        align-items: center; 
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+        margin-top: 5px;
+    }
     .item-footer { margin-left: 0; }
 }
 
